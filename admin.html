@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Havenyx • Admin Panel</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!--   SIDEBAR (Same as index)    -->
+    <!-- ============================= -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/images/logo.png" class="sidebar-logo" alt="Havenyx Logo">
+            <span class="close-btn" onclick="toggleSidebar()">×</span>
+        </div>
+
+        <nav class="sidebar-links">
+            <button onclick="location.href='index.html'">Home</button>
+            <button class="active">Admin Dashboard</button>
+            <button>Inbox</button>
+            <button>Profile</button>
+            <button>Settings</button>
+        </nav>
+    </aside>
+
+    <div id="overlay" onclick="toggleSidebar()"></div>
+
+
+    <!-- ============================= -->
+    <!-- TOP NAVIGATION                -->
+    <!-- ============================= -->
+    <header class="topbar">
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+        <img src="assets/images/logo.png" class="top-logo" alt="Havenyx Logo">
+
+        <div class="division-toggle">
+            <button id="onyxBtn" class="active" onclick="switchDivision('onyx')">Onyx Touch</button>
+            <button id="havenBtn" onclick="switchDivision('haven')">Haven Haus</button>
+        </div>
+    </header>
+
+
+
+    <!-- ============================= -->
+    <!--   ADMIN CONTENT WRAPPER       -->
+    <!-- ============================= -->
+    <main id="content">
+
+        <h2 id="divisionTagline">Admin Panel — Onyx Touch</h2>
+
+        <!-- Manage Products -->
+        <section class="section-block admin-section">
+            <h3 class="section-title">Manage Products</h3>
+
+            <div class="admin-flex">
+                <button class="admin-btn" onclick="showAddForm()">+ Add New Product</button>
+                <button class="admin-btn secondary">View All Products</button>
+            </div>
+        </section>
+
+
+        <!-- Hidden Add Product Form -->
+        <section id="addProductForm" class="section-block admin-form hidden">
+            <h3 class="section-title">Add Product</h3>
+
+            <label>Product Name</label>
+            <input type="text" id="prodName" placeholder="Enter product name">
+
+            <label>Price</label>
+            <input type="number" id="prodPrice" placeholder="Enter price">
+
+            <label>Discount (Optional)</label>
+            <input type="number" id="prodDiscount" placeholder="Enter % discount">
+
+            <label>Upload Image</label>
+            <input type="file" id="prodImage" accept="image/*" onchange="previewImage()">
+
+            <img id="imagePreview" class="preview hidden">
+
+            <button class="admin-btn" onclick="saveProduct()">Save Product</button>
+            <button class="admin-btn secondary" onclick="hideAddForm()">Cancel</button>
+        </section>
+
+    </main>
+
+
+
+    <!-- Mascot Assistant Same Component -->
+    <div class="mascot-bubble">
+        <img src="assets/images/mascot.png" class="mascot-img">
+        <div class="mascot-message">Welcome admin! Need help?</div>
+    </div>
+
+
+    <script src="app.js"></script>
+
+    <!-- ============================= -->
+    <!-- INLINE ADMIN SCRIPTS          -->
+    <!-- ============================= -->
+    <script>
+        function showAddForm() {
+            document.getElementById("addProductForm").classList.remove("hidden");
+        }
+        function hideAddForm() {
+            document.getElementById("addProductForm").classList.add("hidden");
+        }
+
+        function previewImage() {
+            const file = document.getElementById("prodImage").files[0];
+            const preview = document.getElementById("imagePreview");
+
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                preview.classList.remove("hidden");
+            }
+        }
+
+        function saveProduct() {
+            alert("Product saved (UI only — backend coming later)");
+        }
+    </script>
+
+</body>
+</html>

@@ -150,30 +150,7 @@ body[data-division="haven"] .division-toggle span.active {
 
 
 
-/* ===========================================================
-   SIDEBAR
-=========================================================== */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: -260px;
-    width: 260px;
-    height: 100vh;
-    background: #111;
-    border-right: 1px solid rgba(255,255,255,0.08);
-    padding: 15px;
-    transition: left 0.3s ease;
-    z-index: 2000;
-}
 
-body[data-division="haven"] .sidebar {
-    background: #ffffff;
-    border-right: 1px solid #d4d4d4;
-}
-
-.sidebar.open {
-    left: 0;
-}
 
 .sidebar-header {
     display: flex;

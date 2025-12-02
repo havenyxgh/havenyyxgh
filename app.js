@@ -1,104 +1,86 @@
-/* =========================================
-   SIDEBAR TOGGLE
-========================================= */
+console.log("app.js loaded");
+
+
+// =====================
+// SIDEBAR FUNCTIONALITY
+// =====================
+
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+const openBtn = document.getElementById("sidebarToggleTop");  // ☰ button
+const closeBtn = document.getElementById("sidebarToggle");     // × button
 
 function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-
-    // toggle classes
     sidebar.classList.toggle("open");
     overlay.classList.toggle("show");
+    console.log("Sidebar toggled");
 }
 
-console.log("JS loaded");
-
-document.querySelector(".menu-btn")?.addEventListener("click", () => {
-    console.log("Menu button clicked");
-});
+openBtn?.addEventListener("click", toggleSidebar);
+closeBtn?.addEventListener("click", toggleSidebar);
+overlay?.addEventListener("click", toggleSidebar);
 
 
 
-/* =========================================
-   DIVISION SWITCH (ONYX ↔ HAVEN)
-========================================= */
 
-function switchDivision(mode) {
-    const body = document.body;
-    const tagline = document.getElementById("divisionTagline");
-    const onyxBtn = document.getElementById("onyxBtn");
-    const havenBtn = document.getElementById("havenBtn");
+// =====================
+// DIVISION SWITCH
+// =====================
 
-    if (mode === "onyx") {
-        body.classList.remove("haven");
-        body.classList.add("onyx");
+const divisionToggle = document.getElementById("divisionToggle");
+const divisionTagline = document.getElementById("divisionTagline");
 
-        tagline.textContent = "Onyx Touch — where style meets comfort.";
+divisionToggle?.addEventListener("click", (e) => {
+    if (e.target.tagName !== "SPAN") return;
 
-        onyxBtn.classList.add("active");
-        havenBtn.classList.remove("active");
+    const spans = divisionToggle.querySelectorAll("span");
+    spans.forEach(s => s.classList.remove("active"));
+    e.target.classList.add("active");
 
+    if (e.target.textContent === "Onyx Touch") {
+        document.body.dataset.division = "onyx";
+        divisionTagline.textContent = "Onyx Touch — where style meets comfort.";
     } else {
-        body.classList.remove("onyx");
-        body.classList.add("haven");
-
-        tagline.textContent = "Haven Haus — everyday essentials, elevated.";
-
-        havenBtn.classList.add("active");
-        onyxBtn.classList.remove("active");
+        document.body.dataset.division = "haven";
+        divisionTagline.textContent = "Haven Haus — everyday essentials, elevated.";
     }
-}
-
-
-
-/* =========================================
-   MASCOT – FLOATING GUIDE
-========================================= */
-
-let mascotTimer = null;
-
-function showMascotMessage(message) {
-    const bubble = document.querySelector(".mascot-bubble");
-    const msg = document.querySelector(".mascot-message");
-
-    msg.textContent = message;
-    bubble.classList.add("active");
-
-    clearTimeout(mascotTimer);
-
-    mascotTimer = setTimeout(() => {
-        bubble.classList.remove("active");
-    }, 4000);
-}
-
-
-// Triggers
-document.addEventListener("DOMContentLoaded", () => {
-    showMascotMessage("Hi! Need help navigating?");
-});
-
-document.getElementById("sidebar").addEventListener("mouseenter", () => {
-    showMascotMessage("Explore your options here.");
-});
-
-document.querySelector(".menu-btn").addEventListener("click", () => {
-    showMascotMessage("Opening menu...");
-});
-
-document.getElementById("onyxBtn").addEventListener("click", () => {
-    showMascotMessage("Switching to Onyx Touch.");
-});
-
-document.getElementById("havenBtn").addEventListener("click", () => {
-    showMascotMessage("Switching to Haven Haus.");
 });
 
 
 
-/* =========================================
-   NAV HOME (future backend)
-========================================= */
+
+// =====================
+// MASCOT PANEL
+// =====================
+
+const mascot = document.getElementById("mascotAssistant");
+const mascotPanel = document.getElementById("mascotMessagePanel");
+const closeMascot = document.getElementById("mascotMessageClose");
+const mascotForm = document.getElementById("mascotMessageForm");
+const mascotInput = document.getElementById("mascotMessageInput");
+
+mascot?.addEventListener("click", () => {
+    mascotPanel.classList.add("open");
+});
+
+closeMascot?.addEventListener("click", () => {
+    mascotPanel.classList.remove("open");
+});
+
+mascotForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log("Message sent:", mascotInput.value);
+    mascotInput.value = "";
+    mascotPanel.classList.remove("open");
+});
+
+
+
+
+// =====================
+// NAVIGATE HOME
+// =====================
+
 function navigateHome() {
-    showMascotMessage("Back to homepage.");
     window.location.href = "index.html";
 }

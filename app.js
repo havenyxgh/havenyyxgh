@@ -11,6 +11,11 @@ function toggleSidebar() {
     overlay.classList.toggle("show");
 }
 
+console.log("JS loaded");
+
+document.querySelector(".menu-btn")?.addEventListener("click", () => {
+    console.log("Menu button clicked");
+});
 
 
 

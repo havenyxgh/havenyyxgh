@@ -545,3 +545,59 @@ body.haven .cart-btn {
     background: #333;
     color: #fff;
 }
+/* =========================================
+   SIDEBAR FUNCTIONALITY
+========================================= */
+
+#sidebar {
+    transform: translateX(-260px);
+    transition: 0.3s ease;
+}
+
+#sidebar.open {
+    transform: translateX(0);
+}
+
+#overlay {
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+#overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   DIVISION MODES
+========================================= */
+
+body.onyx {
+    background: #0d0d0d;
+    color: white;
+}
+
+body.haven {
+    background: #f5f5f5;
+    color: #222;
+}
+
+body.onyx .section-title {
+    color: gold;
+}
+
+body.haven .section-title {
+    color: #444;
+}
+
+
+/* =========================================
+   MASCOT ACTIVE STATE
+========================================= */
+
+.mascot-bubble.active {
+    opacity: 1;
+    transform: translateY(-8px);
+}

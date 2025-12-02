@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Havenyx • Premium Store</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!--   SIDEBAR (COLLAPSIBLE)      -->
+    <!-- ============================= -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/images/logo.png" class="sidebar-logo" alt="Havenyx Logo">
+            <span class="close-btn" onclick="toggleSidebar()">×</span>
+        </div>
+
+        <nav class="sidebar-links">
+            <button onclick="navigateHome()">Home</button>
+            <button>Categories</button>
+            <button>Wishlist</button>
+            <button>Cart</button>
+            <button>Inbox</button>
+            <button>Profile</button>
+        </nav>
+    </aside>
+
+    <!-- Sidebar overlay (dark background when open) -->
+    <div id="overlay" onclick="toggleSidebar()"></div>
+
+
+    <!-- ============================= -->
+    <!-- TOP NAVIGATION BAR           -->
+    <!-- ============================= -->
+    <header class="topbar">
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+        <!-- Logo on topbar -->
+        <img src="assets/images/logo.png" class="top-logo" alt="Havenyx Logo">
+
+        <!-- Division Toggle -->
+        <div class="division-toggle">
+            <button id="onyxBtn" class="active" onclick="switchDivision('onyx')">Onyx Touch</button>
+            <button id="havenBtn" onclick="switchDivision('haven')">Haven Haus</button>
+        </div>
+    </header>
+
+
+
+    <!-- ============================= -->
+    <!-- MAIN HOME CONTENT            -->
+    <!-- ============================= -->
+    <main id="content">
+
+        <!-- Tagline updates based on division -->
+        <h2 id="divisionTagline">Onyx Touch — where style meets comfort.</h2>
+
+        <!-- Sales Section (placeholder) -->
+        <section class="section-block">
+            <h3 class="section-title">Sales</h3>
+            <p class="placeholder">No items yet. Admin will add products soon.</p>
+        </section>
+
+        <!-- Random Items Section (placeholder) -->
+        <section class="section-block">
+            <h3 class="section-title">Explore</h3>
+            <p class="placeholder">Products will appear once added by admin.</p>
+        </section>
+    </main>
+
+
+
+    <!-- ============================= -->
+    <!-- MASCOT FLOATING ASSISTANT    -->
+    <!-- ============================= -->
+    <div class="mascot-bubble">
+        <img src="assets/images/mascot.png" class="mascot-img" alt="Mascot">
+        <div class="mascot-message">Hi! Need help navigating?</div>
+    </div>
+
+
+    <!-- JS -->
+    <script src="app.js"></script>
+
+</body>
+</html>

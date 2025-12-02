@@ -238,6 +238,18 @@ body[data-division="haven"] .sidebar-links button:hover {
     opacity: 1;
     pointer-events: auto;
 }
+#sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--surface-1);
+    border-right: 1px solid var(--border);
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    transition: left 0.35s ease;
+    z-index: 999;
+}
 
 
 

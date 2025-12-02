@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body data-division="onyx">
 
     <!-- ============================= -->
     <!--   SIDEBAR (COLLAPSIBLE)      -->
     <!-- ============================= -->
-    <aside id="sidebar">
+    <aside id="sidebar" class="sidebar">
         <div class="sidebar-header">
             <img src="assets/images/logo.png" class="sidebar-logo" alt="Havenyx Logo">
-            <span class="close-btn" onclick="toggleSidebar()">×</span>
+            <span id="sidebarToggle" class="close-btn">×</span>
         </div>
 
         <nav class="sidebar-links">
-            <button onclick="navigateHome()">Home</button>
+            <button>Home</button>
             <button>Categories</button>
             <button>Wishlist</button>
             <button>Cart</button>
@@ -28,23 +28,21 @@
         </nav>
     </aside>
 
-    <!-- Sidebar overlay (dark background when open) -->
-    <div id="overlay" onclick="toggleSidebar()"></div>
+    <div id="overlay"></div>
+
 
 
     <!-- ============================= -->
     <!-- TOP NAVIGATION BAR           -->
     <!-- ============================= -->
     <header class="topbar">
-        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+        <button class="menu-btn" id="sidebarToggleTop">☰</button>
 
-        <!-- Logo on topbar -->
         <img src="assets/images/logo.png" class="top-logo" alt="Havenyx Logo">
 
-        <!-- Division Toggle -->
-        <div class="division-toggle">
-            <button id="onyxBtn" class="active" onclick="switchDivision('onyx')">Onyx Touch</button>
-            <button id="havenBtn" onclick="switchDivision('haven')">Haven Haus</button>
+        <div class="division-toggle" id="divisionToggle">
+            <span class="active">Onyx Touch</span>
+            <span>Haven Haus</span>
         </div>
     </header>
 
@@ -55,20 +53,20 @@
     <!-- ============================= -->
     <main id="content">
 
-        <!-- Tagline updates based on division -->
-        <h2 id="divisionTagline">Onyx Touch — where style meets comfort.</h2>
+        <h2 id="divisionTagline" class="tagline">
+            Onyx Touch — where style meets comfort.
+        </h2>
 
-        <!-- Sales Section (placeholder) -->
         <section class="section-block">
             <h3 class="section-title">Sales</h3>
             <p class="placeholder">No items yet. Admin will add products soon.</p>
         </section>
 
-        <!-- Random Items Section (placeholder) -->
         <section class="section-block">
             <h3 class="section-title">Explore</h3>
             <p class="placeholder">Products will appear once added by admin.</p>
         </section>
+
     </main>
 
 
@@ -76,9 +74,21 @@
     <!-- ============================= -->
     <!-- MASCOT FLOATING ASSISTANT    -->
     <!-- ============================= -->
-    <div class="mascot-bubble">
+    <div class="mascot" id="mascotAssistant">
         <img src="assets/images/mascot.png" class="mascot-img" alt="Mascot">
-        <div class="mascot-message">Hi! Need help navigating?</div>
+    </div>
+
+    <!-- Mascot Message Panel -->
+    <div id="mascotMessagePanel" class="mascot-panel">
+        <div class="panel-header">
+            <h3>Need Help?</h3>
+            <span id="mascotMessageClose" class="close-x">×</span>
+        </div>
+
+        <form id="mascotMessageForm" class="panel-body">
+            <textarea id="mascotMessageInput" placeholder="Type your message..."></textarea>
+            <button type="submit" class="send-btn">Send</button>
+        </form>
     </div>
 
 

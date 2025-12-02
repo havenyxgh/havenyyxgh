@@ -151,54 +151,6 @@ body[data-division="haven"] .division-toggle span.active {
 
 
 
-
-.sidebar-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.sidebar-logo {
-    height: 35px;
-}
-
-.close-btn {
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.sidebar-links {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.sidebar-links button {
-    padding: 12px 14px;
-    background: rgba(255,255,255,0.05);
-    border: none;
-    border-radius: 10px;
-    color: inherit;
-    text-align: left;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background 0.25s ease;
-}
-
-.sidebar-links button:hover {
-    background: rgba(255,255,255,0.15);
-}
-
-body[data-division="haven"] .sidebar-links button {
-    background: #f2f2f2;
-}
-
-body[data-division="haven"] .sidebar-links button:hover {
-    background: #e0e0e0;
-}
-
-
 /* Overlay */
 #overlay {
     position: fixed;

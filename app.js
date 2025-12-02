@@ -10,6 +10,11 @@ const overlay = document.getElementById("overlay");
 const openBtn = document.getElementById("sidebarToggleTop");  // ☰ button
 const closeBtn = document.getElementById("sidebarToggle");     // × button
 
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+const openBtn = document.getElementById("sidebarToggleTop");  // ☰ button
+const closeBtn = document.getElementById("sidebarToggle");     // × button
+
 function toggleSidebar() {
     sidebar.classList.toggle("open");
     overlay.classList.toggle("show");

@@ -1,278 +1,350 @@
-/* ========================================= */
-/*            GLOBAL BASE STYLING            */
-/* ========================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
+/* ===========================================================
+   GLOBAL BASE SETTINGS
+=========================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 body {
-    background: #0e0e0e; /* Onyx Touch default */
-    color: #f5f5f5;
+    background: #0c0c0c;
+    color: #ffffff;
+    transition: background 0.4s ease, color 0.4s ease;
     overflow-x: hidden;
-    transition: background 0.3s, color 0.3s;
 }
 
-/* Smooth fade transitions */
-.fade-in {
-    animation: fadeIn 0.5s ease forwards;
+body[data-division="haven"] {
+    background: #f1f1f1;
+    color: #111;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Premium spacing */
+main {
+    padding: 120px 20px 60px;
+    max-width: 1100px;
+    margin: auto;
 }
 
 
-/* ========================================= */
-/*                TOP BAR                    */
-/* ========================================= */
-
+/* ===========================================================
+   TOPBAR
+=========================================================== */
 .topbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 62px;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(8px);
+    height: 70px;
+    backdrop-filter: blur(12px);
+    background: rgba(0,0,0,0.45);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 14px;
+    padding: 0 18px;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+body[data-division="haven"] .topbar {
+    background: rgba(255,255,255,0.55);
+    border-bottom: 1px solid #d4d4d4;
 }
 
 .menu-btn {
     background: none;
     border: none;
-    font-size: 26px;
-    color: white;
+    color: inherit;
+    font-size: 25px;
     cursor: pointer;
 }
 
 .top-logo {
-    height: 38px;
-    margin-left: 6px;
+    height: 40px;
+    object-fit: contain;
 }
 
 
-/* ===== DIVISION TOGGLE ===== */
 
+/* ===========================================================
+   DIVISION TOGGLE
+=========================================================== */
 .division-toggle {
     display: flex;
-    gap: 6px;
-}
-
-.division-toggle button {
-    padding: 7px 14px;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.15);
-    background: transparent;
-    color: white;
+    gap: 10px;
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 40px;
     cursor: pointer;
-    font-size: 13px;
-    transition: 0.25s;
 }
 
-.division-toggle button.active {
-    background: gold;
-    color: black;
+body[data-division="haven"] .division-toggle {
+    background: rgba(0,0,0,0.1);
+}
+
+.division-toggle span {
+    padding: 6px 12px;
+    border-radius: 40px;
+    font-size: 14px;
+    opacity: 0.6;
+    transition: all 0.25s ease;
+}
+
+.division-toggle span.active {
+    opacity: 1;
+    background: #111;
+    color: #fff;
+}
+
+body[data-division="haven"] .division-toggle span.active {
+    background: #d4d4d4;
+    color: #111;
+}
+
+
+
+/* ===========================================================
+   TAGLINE
+=========================================================== */
+.tagline {
+    margin: 15px 0 30px;
+    font-size: 21px;
     font-weight: 600;
 }
 
 
-/* ========================================= */
-/*               SIDEBAR                     */
-/* ========================================= */
 
-#sidebar {
-    position: fixed;
-    top: 0;
-    left: -260px;
-    width: 260px;
-    height: 100%;
-    background: #0a0a0a;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.4);
-    z-index: 999;
-    padding: 20px;
-    transition: left 0.35s ease;
-}
-
-#sidebar.open {
-    left: 0;
-}
-
-#overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.55);
-    z-index: 998;
-}
-
-#overlay.active {
-    display: block;
-}
-
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.sidebar-logo {
-    height: 46px;
-}
-
-.close-btn {
-    font-size: 26px;
-    cursor: pointer;
-    color: white;
-}
-
-.sidebar-links {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.sidebar-links button {
-    background: none;
-    border: none;
-    color: #eaeaea;
-    font-size: 16px;
-    text-align: left;
-    cursor: pointer;
-    padding: 8px 0;
-    transition: color 0.25s;
-}
-
-.sidebar-links button:hover {
-    color: gold;
-}
-
-
-/* ========================================= */
-/*                MAIN CONTENT               */
-/* ========================================= */
-
-#content {
-    padding: 100px 18px 60px;
-}
-
+/* ===========================================================
+   SECTION BLOCKS
+=========================================================== */
 .section-block {
-    margin-bottom: 32px;
+    margin-bottom: 55px;
 }
 
 .section-title {
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 20px;
     margin-bottom: 12px;
-    color: gold;
 }
 
 .placeholder {
-    opacity: 0.45;
+    opacity: 0.6;
     font-size: 14px;
 }
 
 
-/* ========================================= */
-/*            MASCOT BUBBLE                  */
-/* ========================================= */
 
-.mascot-bubble {
+/* ===========================================================
+   SIDEBAR
+=========================================================== */
+.sidebar {
     position: fixed;
-    bottom: 20px;
-    right: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(20,20,20,0.85);
-    padding: 10px 14px;
-    border-radius: 20px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.35);
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(6px);
-    animation: floatUp 0.6s ease forwards;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100vh;
+    background: #111;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    padding: 15px;
+    transition: left 0.3s ease;
+    z-index: 2000;
 }
 
-@keyframes floatUp {
-    from { transform: translateY(15px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+body[data-division="haven"] .sidebar {
+    background: #ffffff;
+    border-right: 1px solid #d4d4d4;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-logo {
+    height: 35px;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.sidebar-links {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-links button {
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.05);
+    border: none;
+    border-radius: 10px;
+    color: inherit;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.sidebar-links button:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+body[data-division="haven"] .sidebar-links button {
+    background: #f2f2f2;
+}
+
+body[data-division="haven"] .sidebar-links button:hover {
+    background: #e0e0e0;
+}
+
+
+/* Overlay */
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 1500;
+}
+
+.sidebar.open ~ #overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+
+/* ===========================================================
+   MASCOT FLOATING ASSISTANT
+=========================================================== */
+.mascot {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--mascot-bg, #1a1a1a);
+    box-shadow: 0 0 15px rgba(255,186,59,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    z-index: 3000;
+}
+
+body[data-division="haven"] .mascot {
+    background: #ffffff;
+    box-shadow: 0 0 14px rgba(0,0,0,0.15);
 }
 
 .mascot-img {
-    height: 48px;
-    width: 48px;
-    border-radius: 50%;
+    width: 65%;
+    user-select: none;
 }
 
-.mascot-message {
-    font-size: 13px;
+/* Hover effect */
+.mascot:hover {
+    transform: scale(1.07);
+}
+
+
+
+/* Mascot Reactions */
+.mascot.look-left { transform: translateX(-10px); }
+.mascot.look-right { transform: translateX(10px); }
+.mascot.bounce { transform: translateY(-10px); }
+.mascot.blink { filter: brightness(0.6); }
+
+.mascot.hover-glow {
+    box-shadow: 0 0 22px rgba(255,186,59,0.7);
+}
+
+
+
+/* ===========================================================
+   MASCOT MESSAGE PANEL
+=========================================================== */
+.mascot-panel {
+    position: fixed;
+    right: 20px;
+    bottom: 110px;
+    width: 260px;
+    background: #1b1b1b;
+    border-radius: 18px;
+    padding: 15px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    z-index: 3500;
+}
+
+body[data-division="haven"] .mascot-panel {
+    background: #ffffff;
+    box-shadow: 0 0 25px rgba(0,0,0,0.1);
+}
+
+.mascot-panel.open {
+    display: flex;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.close-x {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.panel-body {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+textarea {
+    width: 100%;
+    height: 85px;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    background: #2c2c2c;
     color: #fff;
-    opacity: 0.85;
-    max-width: 150px;
+    resize: none;
 }
 
-
-/* ========================================= */
-/*        HAVEN HAUS (GREY MODE)             */
-/* ========================================= */
-
-.haven-mode body,
-body.haven {
-    background: #f2f2f2;
+body[data-division="haven"] textarea {
+    background: #ececec;
     color: #111;
 }
 
-body.haven .topbar {
-    background: rgba(255,255,255,0.9);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-
-body.haven .menu-btn,
-body.haven .division-toggle button {
+.send-btn {
+    padding: 10px;
+    background: #ffbf4b;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
     color: #111;
-    border-color: rgba(0,0,0,0.15);
+    transition: opacity 0.25s ease;
 }
 
-body.haven .division-toggle button.active {
-    background: #333;
-    color: white;
-}
-
-body.haven .section-title {
-    color: #333;
-}
-
-body.haven #sidebar {
-    background: #e5e5e5;
-}
-
-body.haven .sidebar-links button {
-    color: #222;
-}
-
-body.haven .sidebar-links button:hover {
-    color: #000;
-}
-
-body.haven .mascot-bubble {
-    background: rgba(255,255,255,0.8);
-    border: 1px solid rgba(0,0,0,0.1);
-    color: #111;
-}
-
-body.haven .mascot-message {
-    color: #111;
+.send-btn:hover {
+    opacity: 0.8;
 }

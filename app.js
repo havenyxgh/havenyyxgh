@@ -92,6 +92,28 @@ mascotForm?.addEventListener("submit", (e) => {
 function navigateHome() {
     window.location.href = "index.html";
 }
+// ------------------------------
+// ADMIN TAB SWITCHING SYSTEM
+// ------------------------------
+const adminTabs = document.querySelectorAll(".admin-tab");
+const adminSections = document.querySelectorAll(".admin-section");
+
+adminTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        const target = tab.getAttribute("data-admin-tab");
+
+        // remove active highlight
+        adminTabs.forEach(t => t.classList.remove("active"));
+
+        // hide all sections
+        adminSections.forEach(sec => sec.style.display = "none");
+
+        // activate clicked tab + show section
+        tab.classList.add("active");
+        document.getElementById(`admin-${target}`).style.display = "block";
+    });
+});
+
 // Smooth fade-in topbar on scroll
 const topbar = document.querySelector(".topbar");
 

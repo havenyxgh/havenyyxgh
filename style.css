@@ -595,4 +595,13 @@ header img,
 .sidebar img {
     max-width: 100% !important;
 }
+.sidebar-brand-text {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: gold;
+    display: block;
+    margin-bottom: 10px;
+}
 

@@ -189,14 +189,18 @@ body[data-division="haven"] .division-toggle span.active {
 #overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
-    display: none;
-    z-index: 1900;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 1500;
 }
 
 #overlay.show {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
 }
+
 
 
 

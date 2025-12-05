@@ -102,3 +102,15 @@ window.addEventListener("scroll", () => {
         topbar.classList.remove("scrolled");
     }
 });
+// ===============================
+// GOLD HALO SCROLL EFFECT
+// ===============================
+const haloBar = document.getElementById("haloBar");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+        haloBar.style.opacity = "1";
+    } else {
+        haloBar.style.opacity = "0";
+    }
+});

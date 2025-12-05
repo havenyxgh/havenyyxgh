@@ -404,4 +404,100 @@ function bootstrapAppNavAdmin() {
 document.addEventListener("DOMContentLoaded", () => {
   bootstrapAppNavAdmin();
 });
+/* ===========================
+   IMAGE UPLOADER (client-side base64)
+   Append to bottom of app-nav-admin.js
+   =========================== */
+
+(function() {
+  // safe-guards in case elements aren't present
+  const fileInput = document.getElementById("prodImageFile");
+  const previewImg = document.getElementById("prodImagePreview");
+  const prodImageInput = document.getElementById("prodImage");
+
+  // helper: convert File -> base64 string (returns Promise)
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      if (!file) return resolve(null);
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Populate preview and hidden input when user selects a file
+  async function handleFileChange(e) {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+
+    // quick file size guard (5MB)
+    const maxMB = 5;
+    if (f.size > maxMB * 1024 * 1024) {
+      alert(`File is too large — please select an image under ${maxMB} MB.`);
+      fileInput.value = ""; // reset
+      return;
+    }
+
+    try {
+      const base64 = await fileToBase64(f);
+      // set preview
+      if (previewImg) previewImg.src = base64;
+      // set the productForm's image field (used by existing product form logic)
+      if (prodImageInput) prodImageInput.value = base64;
+    } catch (err) {
+      console.error("Failed to convert image:", err);
+      alert("Failed to process image file.");
+    }
+  }
+
+  // If the manual URL field (prodImage) changes (user pastes a URL or clears), update preview
+  function handleManualUrlChange(e) {
+    const v = e.target.value && e.target.value.trim();
+    if (!v) {
+      if (previewImg) previewImg.src = "";
+      return;
+    }
+
+    // If it's a base64 string already, show it; otherwise try to use it as src (may be remote URL)
+    if (v.startsWith("data:image/")) {
+      if (previewImg) previewImg.src = v;
+    } else {
+      // it's probably a URL — set preview but allow browser caching / CORS to handle image load failures
+      if (previewImg) {
+        previewImg.src = v;
+      }
+    }
+  }
+
+  // reset preview & file input when product form resets
+  function resetUploaderPreview() {
+    if (previewImg) previewImg.src = "";
+    if (fileInput) fileInput.value = "";
+    if (prodImageInput) prodImageInput.value = "";
+  }
+
+  // expose a small hook: bootstrap integration if productForm exists in current scope
+  document.addEventListener("DOMContentLoaded", () => {
+    // wire file input
+    if (fileInput) fileInput.addEventListener("change", handleFileChange);
+
+    // wire manual URL change
+    if (prodImageInput) prodImageInput.addEventListener("input", handleManualUrlChange);
+
+    // Attempt to reuse existing resetProductForm if present
+    if (typeof resetProductForm === "function") {
+      // wrap original reset to also clear uploader preview
+      const origReset = resetProductForm;
+      window.resetProductForm = function() {
+        origReset();
+        resetUploaderPreview();
+      };
+    } else {
+      // if not present, export our own for admin UI usage
+      window.resetProductForm = resetUploaderPreview;
+    }
+  });
+
+})();
 

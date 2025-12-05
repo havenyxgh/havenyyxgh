@@ -114,6 +114,7 @@ adminTabs.forEach(tab => {
   
     if (target === "orders") loadAdminOrders();
     if (target === "sales") loadAdminSales();
+if (target === "inbox") loadAdminInbox();
 
   });
 });
@@ -295,6 +296,37 @@ function loadAdminSales() {
             sales.splice(idx, 1);
             localStorage.setItem("sales", JSON.stringify(sales));
             loadAdminSales();
+        });
+    });
+}
+// ------------------------------
+// ADMIN: INBOX
+// ------------------------------
+function loadAdminInbox() {
+    const inbox = JSON.parse(localStorage.getItem("inbox") || "[]");
+    const container = document.getElementById("adminInboxList");
+
+    if (!inbox.length) {
+        container.innerHTML = `<div class="placeholder">No messages yet.</div>`;
+        return;
+    }
+
+    container.innerHTML = inbox.map((m, i) => `
+        <div class="messageItem">
+            <p><b>Name:</b> ${m.name}</p>
+            <p><b>Email:</b> ${m.email}</p>
+            <p><b>Message:</b> ${m.message}</p>
+            <button data-msg-index="${i}" class="deleteMsgBtn">Delete</button>
+            <hr>
+        </div>
+    `).join("");
+
+    document.querySelectorAll(".deleteMsgBtn").forEach(btn => {
+        btn.addEventListener("click", e => {
+            const idx = e.target.dataset.msgIndex;
+            inbox.splice(idx, 1);
+            localStorage.setItem("inbox", JSON.stringify(inbox));
+            loadAdminInbox();
         });
     });
 }

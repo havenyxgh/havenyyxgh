@@ -112,6 +112,8 @@ adminTabs.forEach(tab => {
         tab.classList.add("active");
         document.getElementById(`admin-${target}`).style.display = "block";
     });
+    if (target === "orders") loadAdminOrders();
+
 });
 
 // Smooth fade-in topbar on scroll

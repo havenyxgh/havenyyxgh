@@ -155,8 +155,23 @@
           <input name="colors" id="prodColors" />
           <label>Sizes (comma-separated)</label>
           <input name="sizes" id="prodSizes" />
-          <label>Image URL</label>
-          <input name="image" id="prodImage" placeholder="(use admin image uploader later)" />
+          <!-- IMAGE UPLOADER (admin) -->
+<label>Image</label>
+<div style="display:flex;gap:12px;align-items:center;">
+  <div style="width:120px;height:90px;border-radius:10px;overflow:hidden;border:1px solid #e6e6e6;">
+    <img id="prodImagePreview" alt="preview" style="width:100%;height:100%;object-fit:cover;display:block;" src="" />
+  </div>
+
+  <div style="flex:1;">
+    <!-- Visible text field still kept for manual URL fallback -->
+    <input name="image" id="prodImage" placeholder="(or drop/paste an image or use uploader)" style="width:100%;margin-bottom:8px;padding:8px;border-radius:8px;border:1px solid #ddd;" />
+
+    <!-- File input -->
+    <input type="file" id="prodImageFile" accept="image/*" style="display:block" />
+    <div style="margin-top:8px;font-size:12px;color:#666;">Tip: choose a photo and it will be saved for this prototype (stored in your browser).</div>
+  </div>
+</div>
+
           <button type="submit" id="saveProductBtn">Save Product</button>
         </form>
 

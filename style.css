@@ -838,4 +838,34 @@ body[data-division="haven"] .division-toggle span.active {
     opacity: 1;
     transform: translateY(0);
 }
+/* =============================== */
+/* HAVENYX GOLD SCROLL HALO       */
+/* =============================== */
+
+#haloBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(215, 195, 130, 0.25),
+        rgba(215, 195, 130, 0.10),
+        rgba(215, 195, 130, 0)
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 900; /* just under topbar */
+}
+
+body[data-division="haven"] #haloBar {
+    background: linear-gradient(
+        to bottom,
+        rgba(70, 70, 70, 0.18),
+        rgba(70, 70, 70, 0.08),
+        rgba(70, 70, 70, 0)
+    );
+}
 

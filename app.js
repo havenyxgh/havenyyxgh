@@ -137,6 +137,11 @@ if (prodImageFile) {
     };
     reader.readAsDataURL(file);
   });
+    document.getElementById("adminHomeBtn").addEventListener("click", () => {
+  document.getElementById("admin").style.display = "none";
+  document.getElementById("content").style.display = "block";
+});
+
 
 /* ================================
    ADMIN — ORDERS TAB

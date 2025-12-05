@@ -144,7 +144,6 @@ window.addEventListener("scroll", () => {
 /* ================================
    IMAGE PREVIEW FOR ADMIN PRODUCT FORM
 =================================== */
-
 const prodImageFile = document.getElementById("prodImageFile");
 const prodImagePreview = document.getElementById("prodImagePreview");
 const prodImageText = document.getElementById("prodImage");
@@ -156,14 +155,13 @@ if (prodImageFile) {
 
     const reader = new FileReader();
     reader.onload = e => {
-      // Show image preview
       prodImagePreview.src = e.target.result;
-
-      // Store base64 in hidden text input so it saves
       prodImageText.value = e.target.result;
     };
     reader.readAsDataURL(file);
   });
+}
+
     
  document.getElementById("adminHomeBtn").addEventListener("click", () => {
   document.getElementById("admin").style.display = "none";
@@ -230,9 +228,6 @@ document.addEventListener("click", e => {
 });
 
 // When orders tab is opened
-document.querySelector('[data-admin-tab="orders"]').addEventListener("click", () => {
-    renderOrders();
-});
 // ------------------------------
 // ADMIN: ORDERS MANAGEMENT
 // ------------------------------

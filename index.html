@@ -20,14 +20,18 @@
         <span id="sidebarToggle" class="close-btn">×</span>
     </div>
 
-    <nav class="sidebar-links">
-        <button>🏠 Home</button>
-        <button>🛍 Categories</button>
-        <button>⭐ Wishlist</button>
-        <button>🛒 Cart</button>
-        <button>📨 Inbox</button>
-        <button>👤 Profile</button>
-    </nav>
+    <nav class="sidebar-links" aria-label="Main navigation">
+  <button class="nav-btn" data-tab="home">🏠 Home</button>
+  <button class="nav-btn" data-tab="categories">🛍 Categories</button>
+  <button class="nav-btn" data-tab="wishlist">⭐ Wishlist</button>
+  <button class="nav-btn" data-tab="cart">🛒 Cart</button>
+  <button class="nav-btn" data-tab="inbox">📨 Inbox</button>
+  <button class="nav-btn" data-tab="profile">👤 Profile</button>
+
+  <!-- admin access (hidden by default unless successfully authed) -->
+  <button id="adminEntryBtn" class="nav-btn" data-tab="admin" style="display:none;">🔧 Admin</button>
+</nav>
+
 </aside>
 
 <div id="overlay"></div>
@@ -55,26 +59,130 @@
 
 
 
-    <!-- ============================= -->
-    <!-- MAIN HOME CONTENT            -->
-    <!-- ============================= -->
-    <main id="content">
+    <!-- MAIN CONTENT SECTIONS (ONLY ONE VISIBLE AT A TIME) -->
+<main id="content">
 
-        <h2 id="divisionTagline" class="tagline">
-            Onyx Touch — where style meets comfort.
-        </h2>
+  <!-- HOME -->
+  <section id="home" class="page-section">
+    <div class="brand-header">
+      <span class="brand-text">HAVENYX</span>
+    </div>
+    <h2 id="divisionTagline" class="tagline">Onyx Touch — where style meets comfort.</h2>
 
-        <section class="section-block">
-            <h3 class="section-title">Sales</h3>
-            <p class="placeholder">No items yet. Admin will add products soon.</p>
-        </section>
+    <section class="section-block">
+      <h3 class="section-title">Sales</h3>
+      <div class="product-grid" id="salesGrid">
+        <!-- small placeholder card to show layout; admin will populate -->
+        <div class="product-card">
+          <div class="product-img">IMG</div>
+          <h4 class="product-title">Sample Product</h4>
+          <div class="product-price"><span class="new">GHS 120</span><span class="old">GHS 150</span></div>
+        </div>
+      </div>
+    </section>
 
-        <section class="section-block">
-            <h3 class="section-title">Explore</h3>
-            <p class="placeholder">Products will appear once added by admin.</p>
-        </section>
+    <section class="section-block">
+      <h3 class="section-title">Explore</h3>
+      <div class="product-grid" id="exploreGrid">
+        <!-- placeholder -->
+      </div>
+    </section>
+  </section>
 
-    </main>
+  <!-- CATEGORIES -->
+  <section id="categories" class="page-section" style="display:none;">
+    <h3 class="section-title">Categories</h3>
+    <div class="placeholder">Categories will be listed here. (Room, Tech / Electrical, Stationery, Kitchen, Clothing, Bathroom, Skincare, Haircare...)</div>
+  </section>
+
+  <!-- WISHLIST -->
+  <section id="wishlist" class="page-section" style="display:none;">
+    <h3 class="section-title">Wishlist</h3>
+    <div id="wishlistItems" class="placeholder">No items yet.</div>
+  </section>
+
+  <!-- CART -->
+  <section id="cart" class="page-section" style="display:none;">
+    <h3 class="section-title">Cart</h3>
+    <div id="cartItems" class="placeholder">Your cart is empty.</div>
+  </section>
+
+  <!-- INBOX -->
+  <section id="inbox" class="page-section" style="display:none;">
+    <h3 class="section-title">Inbox</h3>
+    <div id="inboxArea" class="placeholder">Messages & order updates will appear here.</div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile" class="page-section" style="display:none;">
+    <h3 class="section-title">Profile</h3>
+    <div class="placeholder">
+      <div id="profileName">Name: —</div>
+      <div id="profileEmail">Email: —</div>
+      <div id="profilePhone">Phone: —</div>
+      <button id="logoutBtn" class="luxe-hover">Logout</button>
+    </div>
+  </section>
+
+  <!-- ADMIN (hidden until login) -->
+  <section id="admin" class="page-section" style="display:none;">
+    <h3 class="section-title">Admin Panel</h3>
+
+    <!-- Admin tabs -->
+    <div class="admin-tabs">
+      <button data-admin-tab="products" class="admin-tab active">Products</button>
+      <button data-admin-tab="orders" class="admin-tab">Orders</button>
+      <button data-admin-tab="sales" class="admin-tab">Sales</button>
+      <button data-admin-tab="inbox" class="admin-tab">Inbox</button>
+    </div>
+
+    <div id="adminContent">
+      <!-- Products editor -->
+      <div id="admin-products" class="admin-section">
+        <h4>Add / Edit Product</h4>
+        <form id="productForm">
+          <label>Brand</label>
+          <input name="brand" id="prodBrand" required />
+          <label>Name</label>
+          <input name="name" id="prodName" required />
+          <label>Price (GHS)</label>
+          <input name="price" id="prodPrice" type="number" required />
+          <label>Old Price (optional)</label>
+          <input name="oldPrice" id="prodOldPrice" type="number" />
+          <label>Category</label>
+          <input name="category" id="prodCategory" />
+          <label>Colors (comma-separated)</label>
+          <input name="colors" id="prodColors" />
+          <label>Sizes (comma-separated)</label>
+          <input name="sizes" id="prodSizes" />
+          <label>Image URL</label>
+          <input name="image" id="prodImage" placeholder="(use admin image uploader later)" />
+          <button type="submit" id="saveProductBtn">Save Product</button>
+        </form>
+
+        <div id="adminProductsList" style="margin-top:16px;"></div>
+      </div>
+
+      <!-- Other admin panes (placeholders) -->
+      <div id="admin-orders" class="admin-section" style="display:none;">
+        <h4>Orders</h4>
+        <div id="ordersList" class="placeholder">No orders yet.</div>
+      </div>
+
+      <div id="admin-sales" class="admin-section" style="display:none;">
+        <h4>Sales</h4>
+        <div id="salesList" class="placeholder">No active discounts.</div>
+      </div>
+
+      <div id="admin-inbox" class="admin-section" style="display:none;">
+        <h4>Admin Inbox</h4>
+        <div id="adminInboxList" class="placeholder">No messages yet.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
 
 
 

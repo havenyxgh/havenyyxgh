@@ -821,4 +821,18 @@ body[data-division="haven"] .division-toggle span.active {
     background: #222;
     color: white;
 }
+/* ============================
+   LUXE SCROLL FADE-IN TOPBAR
+============================= */
+
+.topbar {
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.topbar.scrolled {
+    opacity: 1;
+    transform: translateY(0);
+}
 

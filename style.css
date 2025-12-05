@@ -577,3 +577,8 @@ body.haven .section-title {
     opacity: 1;
     transform: translateY(-8px);
 }
+.top-logo,
+.sidebar-logo {
+    max-width: 120px !important;
+    height: auto !important;
+}

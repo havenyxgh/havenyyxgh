@@ -860,14 +860,7 @@ body[data-division="haven"] .division-toggle span.active {
     z-index: 900; /* just under topbar */
 }
 
-body[data-division="haven"] #haloBar {
-    background: linear-gradient(
-        to bottom,
-        rgba(70, 70, 70, 0.18),
-        rgba(70, 70, 70, 0.08),
-        rgba(70, 70, 70, 0)
-    );
-}
+
 /* ============================
    TOPBAR — SEAMLESS PREMIUM
 ============================ */

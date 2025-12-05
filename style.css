@@ -776,4 +776,49 @@ header img,
     color: #f8e7b5;
     font-weight: 400;
 }
+/* ==========================================
+   HAVEN HAUS — GREY MINIMAL MODE
+========================================== */
+
+body[data-division="haven"] {
+    background: #e8e8e8 !important;
+    color: #222 !important;
+}
+
+body[data-division="haven"] .topbar {
+    background: rgba(255,255,255,0.55);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+body[data-division="haven"] .section-title {
+    color: #333;
+}
+
+body[data-division="haven"] .product-card {
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+}
+
+body[data-division="haven"] .product-img {
+    background: linear-gradient(160deg, #f5f5f5, #e0e0e0);
+}
+
+body[data-division="haven"] .product-title {
+    color: #444;
+}
+
+body[data-division="haven"] .product-price .new {
+    color: #111;
+}
+
+body[data-division="haven"] .product-price .old {
+    color: #9a9a9a;
+}
+
+/* Division toggle style */
+body[data-division="haven"] .division-toggle span.active {
+    background: #222;
+    color: white;
+}
 

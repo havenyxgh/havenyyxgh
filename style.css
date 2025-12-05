@@ -580,7 +580,7 @@ body.haven .section-title {
 /* FORCE LOGO SIZE — TOP & SIDEBAR */
 .top-logo,
 .sidebar-logo {
-    width: 90px !important;
+    width: 50px !important;
     height: auto !important;
     object-fit: contain !important;
     display: block;

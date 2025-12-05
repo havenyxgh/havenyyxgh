@@ -28,18 +28,17 @@ main {
 }
 
 
-/* ===========================================================
-   TOPBAR
-=========================================================== */
 .topbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 70px;
-    backdrop-filter: blur(12px);
-    background: rgba(0,0,0,0.45);
-   border-bottom: none;
+
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border-bottom: none !important;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -48,8 +47,9 @@ main {
 }
 
 body[data-division="haven"] .topbar {
-    background: rgba(255,255,255,0.55);
-    border-bottom: 1px solid #d4d4d4;
+    background: transparent !important;
+    border-bottom: none !important;
+    backdrop-filter: none !important;
 }
 
 .menu-btn {

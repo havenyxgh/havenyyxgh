@@ -7,22 +7,6 @@
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
 }
-.brand-header {
-    width: 100%;
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 10px;
-}
-
-.brand-text {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    background: linear-gradient(to right, gold, white);
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
 
 body {
     background: #0c0c0c;

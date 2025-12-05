@@ -228,3 +228,39 @@ document.addEventListener("click", e => {
 document.querySelector('[data-admin-tab="orders"]').addEventListener("click", () => {
     renderOrders();
 });
+// ------------------------------
+// ADMIN: ORDERS MANAGEMENT
+// ------------------------------
+function loadAdminOrders() {
+    const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+    const container = document.getElementById("ordersList");
+
+    if (!orders.length) {
+        container.innerHTML = `<div class="placeholder">No orders yet.</div>`;
+        return;
+    }
+
+    container.innerHTML = orders.map((o, i) => `
+        <div class="orderItem">
+            <p><b>Order ID:</b> ${o.id}</p>
+            <p><b>Customer:</b> ${o.name}</p>
+            <p><b>Total:</b> GHS ${o.total}</p>
+            <p><b>Status:</b> 
+                <select data-order-index="${i}" class="orderStatusSelect">
+                    <option ${o.status === "Pending" ? "selected" : ""}>Pending</option>
+                    <option ${o.status === "Processing" ? "selected" : ""}>Processing</option>
+                    <option ${o.status === "Completed" ? "selected" : ""}>Completed</option>
+                </select>
+            </p>
+            <hr>
+        </div>
+    `).join("");
+
+    document.querySelectorAll(".orderStatusSelect").forEach(sel => {
+        sel.addEventListener("change", e => {
+            const idx = e.target.dataset.orderIndex;
+            orders[idx].status = e.target.value;
+            localStorage.setItem("orders", JSON.stringify(orders));
+        });
+    });
+}

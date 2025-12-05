@@ -576,3 +576,18 @@ body.haven .section-title {
 .mascot-bubble.active {
     opacity: 1;
     transform: translateY(-8px);
+/* FORCE LOGO SIZE — TOP & SIDEBAR */
+.top-logo,
+.sidebar-logo {
+    width: 90px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block;
+}
+
+/* Extra safety — prevent stretching */
+header img,
+.sidebar img {
+    max-width: 100% !important;
+}
+

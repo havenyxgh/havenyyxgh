@@ -111,9 +111,11 @@ adminTabs.forEach(tab => {
         // activate clicked tab + show section
         tab.classList.add("active");
         document.getElementById(`admin-${target}`).style.display = "block";
-    });
+  
     if (target === "orders") loadAdminOrders();
+    if (target === "sales") loadAdminSales();
 
+  });
 });
 
 // Smooth fade-in topbar on scroll

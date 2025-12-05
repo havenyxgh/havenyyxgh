@@ -266,3 +266,33 @@ function loadAdminOrders() {
         });
     });
 }
+// ------------------------------
+// ADMIN: SALES SYSTEM
+// ------------------------------
+function loadAdminSales() {
+    const sales = JSON.parse(localStorage.getItem("sales") || "[]");
+    const container = document.getElementById("salesList");
+
+    if (!sales.length) {
+        container.innerHTML = `<div class="placeholder">No active discounts.</div>`;
+        return;
+    }
+
+    container.innerHTML = sales.map((s, i) => `
+        <div class="saleItem">
+            <p><b>Category:</b> ${s.category}</p>
+            <p><b>Discount:</b> ${s.percent}% OFF</p>
+            <button data-sale-index="${i}" class="deleteSaleBtn">Delete</button>
+            <hr>
+        </div>
+    `).join("");
+
+    document.querySelectorAll(".deleteSaleBtn").forEach(btn => {
+        btn.addEventListener("click", e => {
+            const idx = e.target.dataset.saleIndex;
+            sales.splice(idx, 1);
+            localStorage.setItem("sales", JSON.stringify(sales));
+            loadAdminSales();
+        });
+    });
+}

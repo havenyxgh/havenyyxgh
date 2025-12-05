@@ -142,3 +142,64 @@ document.getElementById("adminHomeBtn").addEventListener("click", () => {
   document.getElementById("admin").style.display = "none";
   document.getElementById("content").style.display = "block";
 });
+/* ================================
+   ADMIN — ORDERS TAB
+================================= */
+
+// Read orders
+function getOrders() {
+    return JSON.parse(localStorage.getItem("orders") || "[]");
+}
+
+// Save orders
+function saveOrders(list) {
+    localStorage.setItem("orders", JSON.stringify(list));
+}
+
+// Render orders into admin tab
+function renderOrders() {
+    const orders = getOrders();
+    const container = document.getElementById("ordersList");
+
+    if (!container) return;
+
+    if (orders.length === 0) {
+        container.innerHTML = `<p class="placeholder">No orders yet.</p>`;
+        return;
+    }
+
+    container.innerHTML = orders.map(o => `
+        <div class="admin-order-card">
+            <p><strong>Product:</strong> ${o.product}</p>
+            <p><strong>Price:</strong> GHS ${o.price}</p>
+            <p><strong>Customer:</strong> ${o.customer}</p>
+            <p><strong>Date:</strong> ${o.date}</p>
+        </div>
+    `).join("");
+}
+
+// TEMP: Create a test order when clicking a product price (demo only)
+document.addEventListener("click", e => {
+    if (e.target.classList.contains("new-price")) {
+        const productName = e.target.closest(".product-card").querySelector(".product-name").textContent;
+        const price = e.target.textContent.replace("GHS ", "");
+
+        const orders = getOrders();
+
+        orders.push({
+            product: productName,
+            price: price,
+            customer: "Demo User",
+            date: new Date().toLocaleString(),
+        });
+
+        saveOrders(orders);
+        renderOrders();
+        alert("Order created for testing!");
+    }
+});
+
+// When orders tab is opened
+document.querySelector('[data-admin-tab="orders"]').addEventListener("click", () => {
+    renderOrders();
+});

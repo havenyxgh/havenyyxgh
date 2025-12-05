@@ -1,29 +1,32 @@
 console.log("app.js loaded");
 
 
-// =====================
+// ===========================
 // SIDEBAR FUNCTIONALITY
-// =====================
+// ===========================
 
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
-const openBtn = document.getElementById("sidebarToggleTop");  // ☰ button
-const closeBtn = document.getElementById("sidebarToggle");     // × button
+const openBtn = document.getElementById("sidebarToggleTop");
+const closeBtn = document.getElementById("sidebarToggle");
 
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
-const openBtn = document.getElementById("sidebarToggleTop");  // ☰ button
-const closeBtn = document.getElementById("sidebarToggle");     // × button
+// Open sidebar
+openBtn.addEventListener("click", () => {
+    sidebar.classList.add("open");
+    overlay.classList.add("show");
+});
 
-function toggleSidebar() {
-    sidebar.classList.toggle("open");
-    overlay.classList.toggle("show");
-    console.log("Sidebar toggled");
-}
+// Close sidebar (button inside panel)
+closeBtn.addEventListener("click", () => {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+});
 
-openBtn?.addEventListener("click", toggleSidebar);
-closeBtn?.addEventListener("click", toggleSidebar);
-overlay?.addEventListener("click", toggleSidebar);
+// Close when clicking background overlay
+overlay.addEventListener("click", () => {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+});
 
 
 

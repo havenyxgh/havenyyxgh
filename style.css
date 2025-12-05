@@ -1093,4 +1093,20 @@ body[data-division="haven"] .topbar * {
   background: var(--gold);
   color: black;
 }
+.admin-order-card {
+    padding: 14px;
+    margin-bottom: 10px;
+    background: #141414;
+    border-radius: 14px;
+    border: 1px solid #222;
+}
+
+body.haven .admin-order-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+}
+
+.admin-order-card p {
+    margin: 4px 0;
+}
 

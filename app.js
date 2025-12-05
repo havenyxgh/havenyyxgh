@@ -114,3 +114,27 @@ window.addEventListener("scroll", () => {
         haloBar.style.opacity = "0";
     }
 });
+/* ================================
+   IMAGE PREVIEW FOR ADMIN PRODUCT FORM
+=================================== */
+
+const prodImageFile = document.getElementById("prodImageFile");
+const prodImagePreview = document.getElementById("prodImagePreview");
+const prodImageText = document.getElementById("prodImage");
+
+if (prodImageFile) {
+  prodImageFile.addEventListener("change", () => {
+    const file = prodImageFile.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = e => {
+      // Show image preview
+      prodImagePreview.src = e.target.result;
+
+      // Store base64 in hidden text input so it saves
+      prodImageText.value = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}

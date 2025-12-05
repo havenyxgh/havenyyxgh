@@ -51,18 +51,24 @@
     <!-- ============================= -->
     <main id="content">
 
-        <h2 id="divisionTagline">Admin Panel — Onyx Touch</h2>
+    <h2 id="divisionTagline">Admin Panel — Onyx Touch</h2>
 
-        <!-- Manage Products -->
-        <section class="section-block admin-section">
-            <h3 class="section-title">Manage Products</h3>
+    <!-- ======== ADMIN TABS ======== -->
+    <div class="admin-tabs">
+        <button data-admin-tab="products" class="admin-tab active">Products</button>
+        <button data-admin-tab="orders" class="admin-tab">Orders</button>
+        <button data-admin-tab="sales" class="admin-tab">Sales</button>
+        <button data-admin-tab="inbox" class="admin-tab">Inbox</button>
+    </div>
 
-            <div class="admin-flex">
-                <button class="admin-btn" onclick="showAddForm()">+ Add New Product</button>
-                <button class="admin-btn secondary">View All Products</button>
-            </div>
-        </section>
+    <!-- ======== PRODUCTS SECTION ======== -->
+    <section id="admin-products" class="admin-section">
 
+        <h3 class="section-title">Manage Products</h3>
+
+        <div class="admin-flex">
+            <button class="admin-btn" onclick="showAddForm()">+ Add New Product</button>
+        </div>
 
         <!-- Hidden Add Product Form -->
         <section id="addProductForm" class="section-block admin-form hidden">
@@ -78,15 +84,66 @@
             <input type="number" id="prodDiscount" placeholder="Enter % discount">
 
             <label>Upload Image</label>
-            <input type="file" id="prodImage" accept="image/*" onchange="previewImage()">
+            <input type="file" id="prodImageFile" accept="image/*">
 
-            <img id="imagePreview" class="preview hidden">
+            <img id="prodImagePreview" class="preview hidden">
+            <input type="hidden" id="prodImage">
 
             <button class="admin-btn" onclick="saveProduct()">Save Product</button>
             <button class="admin-btn secondary" onclick="hideAddForm()">Cancel</button>
         </section>
 
-    </main>
+        <div id="productList" class="admin-list"></div>
+
+    </section>
+
+
+    <!-- ======== ORDERS SECTION ======== -->
+    <section id="admin-orders" class="admin-section" style="display:none;">
+        <h3>Orders</h3>
+        <div id="ordersList"></div>
+    </section>
+
+
+    <!-- ======== SALES SECTION ======== -->
+    <section id="admin-sales" class="admin-section" style="display:none;">
+
+        <h3>Create Discount</h3>
+
+        <form id="discountForm">
+            <label>Discount Name</label>
+            <input id="discountName" required>
+
+            <label>Discount Type</label>
+            <select id="discountType" required>
+                <option value="percent">Percentage (%)</option>
+                <option value="amount">Fixed Amount (GHS)</option>
+                <option value="newprice">Set Sale Price</option>
+            </select>
+
+            <label>Value</label>
+            <input id="discountValue" type="number" required>
+
+            <label>Apply To Products</label>
+            <select id="discountProducts" multiple style="height:150px;"></select>
+
+            <button type="submit" class="admin-btn">Save Discount</button>
+        </form>
+
+        <h3 style="margin-top:20px;">Active Discounts</h3>
+        <div id="discountList"></div>
+
+    </section>
+
+
+    <!-- ======== INBOX SECTION ======== -->
+    <section id="admin-inbox" class="admin-section" style="display:none;">
+        <h3>Inbox Messages</h3>
+        <div id="adminInboxList"></div>
+    </section>
+
+</main>
+
 
 
 

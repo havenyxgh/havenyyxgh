@@ -987,4 +987,41 @@ body[data-division="haven"] .division-toggle span {
 body[data-division="haven"] .division-toggle span {
     color: #444 !important;
 }
+/* ================================
+   FORCE TOPBAR ELEMENT VISIBILITY
+================================ */
+
+/* Make text/icons visible on dark Onyx Touch */
+body[data-division="onyx"] .topbar,
+body.onyx .topbar {
+    background: rgba(0,0,0,0.35) !important;
+    border-bottom: none !important;
+}
+
+body[data-division="onyx"] .topbar * {
+    color: #ffffff !important;
+}
+
+/* Make text/icons visible on light Haven Haus */
+body[data-division="haven"] .topbar,
+body.haven .topbar {
+    background: rgba(255,255,255,0.55) !important;
+    border-bottom: none !important;
+}
+
+body[data-division="haven"] .topbar * {
+    color: #111 !important;
+}
+
+/* Sidebar brand text force visible */
+.sidebar-brand-text {
+    color: gold !important;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* Make division switch always visible */
+.division-toggle span {
+    opacity: 1 !important;
+}
 

@@ -576,6 +576,7 @@ body.haven .section-title {
 .mascot-bubble.active {
     opacity: 1;
     transform: translateY(-8px);
+}
 /* FORCE LOGO SIZE — TOP & SIDEBAR */
 .top-logo,
 .sidebar-logo {

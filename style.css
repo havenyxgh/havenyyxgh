@@ -39,7 +39,7 @@ main {
     height: 70px;
     backdrop-filter: blur(12px);
     background: rgba(0,0,0,0.45);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+   border-bottom: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -683,7 +683,7 @@ header img,
     align-items: center;
     justify-content: space-between;
     padding: 0 18px;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.08);
+    border-bottom: none;
     z-index: 900;
 }
 

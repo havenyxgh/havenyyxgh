@@ -1024,4 +1024,57 @@ body[data-division="haven"] .topbar * {
 .division-toggle span {
     opacity: 1 !important;
 }
+/* =========================================
+   PART E — LUXE ANIMATION + ICON REFINEMENT
+========================================= */
+
+/* Soft hover movement (premium micro-interaction) */
+.luxe-hover {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.luxe-hover:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+/* Gold glow buttons */
+.gold-touch {
+    transition: 0.25s ease;
+}
+
+.gold-touch:hover {
+    box-shadow: 0 0 14px rgba(215, 185, 110, 0.35);
+}
+
+/* Division toggle refinement */
+.division-toggle span {
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    transition: 0.25s ease;
+}
+
+.division-toggle span.active {
+    border: 1px solid rgba(215, 185, 110, 0.45);
+    box-shadow: 0 0 12px rgba(215, 185, 110, 0.18);
+}
+
+/* Sidebar links movement */
+.sidebar-links button {
+    transition: 0.25s ease;
+}
+
+.sidebar-links button:hover {
+    transform: translateX(6px);
+}
+
+/* Mascot hover refinement */
+.mascot {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mascot:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 22px rgba(255, 200, 90, 0.55);
+}
 
